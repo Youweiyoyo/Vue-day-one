@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+    <div id="app" v-for>
+        <ul>
+            <!-- 将msg中取到的值存进item中，使用v-for进行遍历 -->
+            <li v-for="item  in msg">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const ap = new Vue({
+            el: '#app',
+            data: {
+                msg: [1, 2, 3, 4, 5]
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>总价格:{{totalprice}}</h3>
+    <ul>
+      <li v-for="item in books">{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        mag: '爱上李银河，',
+        mas: '可我的家里没有草原',
+        books: [
+          { id: 1, name: '西游记', price: 119 },
+          { id: 2, name: '西游记', price: 119 },
+          { id: 3, name: '西游记', price: 119 },
+          { id: 4, name: '西游记', price: 119 },
+        ],
+      },
+      computed: {
+        totalprice: function () {
+          let result = 0;
+          // for (let i = 0; i < this.books.length; i++) {
+          //   result += this.books[i].price
+          // }
+          this.books.forEach(function (item, index, arr) {
+            // item：每个数组元素
+            // index：每个数组元素的索引号
+            // arr：数组本身
+            result += item.price
+          });
+          return result
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

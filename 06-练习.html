@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="aap">
+    <div>{{message}}</div>
+    <div>
+      <img v-bind:src="url" alt="">
+      <!-- 语法糖写法 -->
+      <img :src="url" alt="">     
+    </div>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#aap',
+      data: {
+        message: 'hellow Vue',
+        url: 'https://img.alicdn.com/imgextra/i2/98575908/O1CN01yqdagV1tVuaPgdgVs_!!0-saturn_solar.jpg_220x220.jpg_.webp'
+      }
+    })
+  </script>
+</body>
+
+</html>

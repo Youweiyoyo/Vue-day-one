@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{massage}}</div>
+    <div v-once>{{massage}}</div>
+    <div v-html="url"></div>
+    <div v-cloak>{{url}}</div>
+    <div v-text="massage"></div>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        massage: '张三',
+        url: '<a href = "http://www.baidu.com">百度一下</a>'
+      }
+    })
+  </script>
+</body>
+
+</html>

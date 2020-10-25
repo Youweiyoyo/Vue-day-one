@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+<script>
+  let X = 10;
+  let Y = 30;
+  [X, Y] = [Y, X];
+  console.log(X);
+  console.log(Y);
+  let sum = 0;
+  for (let i = 0; i <= 100; i++) {
+    sum += i;
+    console.log(i);
+  }
+  console.log(sum);
+  // 递归写斐波那契序列
+  function fn(n) {
+    if (n === 1 || n === 2) {
+      return 1
+    }
+    return fn(n - 1) + fn(n - 2)
+  }
+  console.log(fn(8));
+  // 冒泡排序
+  let arr = [1, 4, 8, 3, 9, 0];
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  console.log(arr);
+  // 利用sort进行排序
+  let arr1 = [1, 4, 8, 3, 9, 0];
+  arr1.sort(function (a, b) {
+    return a - b
+  })
+  console.log(arr1);
+  // 构造函数创建类
+  class Actor {
+    constructor(a, age) {
+      this.a = a;
+      this.age = age;
+    }
+  }
+  let ldh = new Actor(180, 24);
+  console.log(ldh);
+</script>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in mag">{{item}}</li>
+    </ul>
+    <!-- 不加引号就是变量 -->
+    <div v-bind:class='[massage]'>{{mag}}</div>
+    <!-- 加上引号就是字符串 -->
+    <div v-bind:class='["massage"]'>{{mag}}</div>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        mag: [1, 2, 3, 4, 5],
+        massage: 'six',
+      }
+    })
+  </script>
+</body>
+
+
+</html>

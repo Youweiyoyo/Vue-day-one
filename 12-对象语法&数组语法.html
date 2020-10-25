@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 对象语法： ：style={key(属性名)：value(属性值)} -->
+    <!-- 这里注意单位需要 + '',否则是当一个变量去解析 -->
+    <!-- 如果给属性值+ ' ',则会当成字符串去解析 -->
+    <h2 :style="{fontSize: fontSize +'px'}">{{mag}}</h2>
+    <!-- 数组语法：以数组的形式去存储值-->
+    <h3 :style="[base,base2]">{{mag}}</h3>
+    <!-- 调用函数方法的形式 -->
+    <h3> {{getfullname()}}</h3>
+    <!-- 调用计算属性 -->
+    <h3>{{fullname}}</h3>
+    <div>
+      <ul>
+        <li v-for='item in arr' :style="{fontSize: fontSize +'px'}">{{item}}</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        mag: '爱上了李银河',
+        fontSize: 100,
+        arr: [2, 4, 6, 8, 10],
+        base: { fontSize: '100px' },
+        base2: { backgroundColor: 'red' },
+        uname: '勒布朗',
+        age: '詹姆斯',
+      },
+      // computed   计算属性
+      computed: {
+        fullname: function () {
+          return this.uname + ' ' + this.age
+        }
+      },
+      methods: {
+        getfullname() {
+          return this.uname + ' ' + this.age
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

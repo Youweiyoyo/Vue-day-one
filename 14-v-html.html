@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .blue {
+      background-color: blue;
+      font-size: 50px;
+    }
+  </style>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p v-html='msg'></p>
+    <!-- 利用bind：class绑定了一个变量，变量的名称为red -->
+    <p v-bind:class="color">{{six}}</p>
+    <p v-bind:class="style">{{six}}</p>
+  </div>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: '<span style="color:red;font-size:50px" >李银河</span>',
+        six: '这是利用bind添加类名的方式添加的文本颜色',
+        // 声明了一个变量，值为red
+        color: 'red',
+        style: 'blue'
+      }
+    })
+  </script>
+</body>
+
+</html>

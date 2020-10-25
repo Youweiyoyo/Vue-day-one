@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .viset {
+      color: red;
+    }
+  </style>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2 v-bind:class='{viset:six}'>{{message}}</h2>
+    <button v-on:click='btnclick'>点击按钮变色</button>
+    {{num}}
+    <button @click='add'>+</button>
+    <button @click='jian'>-</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '李银河',
+        six: true,
+        num: 0,
+      },
+      methods: {
+        btnclick: function () {
+          this.six = !this.six
+        },
+        add: function () {
+          this.num++;
+        },
+        jian: function () {
+          this.num--;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

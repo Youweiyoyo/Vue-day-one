@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2 v-bind:class="{active:six}">{{message}}</h2>
+    <button v-on:click='btnClick'>按钮</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊~',
+        six: true,
+      },
+      methods: {
+        btnClick: function () {
+          this.six = !this.six
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

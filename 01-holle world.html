@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 插值表达式  -->
+        {{msg}}
+        <div>{{1+2}}</div>
+        <span>{{name}}</span>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',  // el  元素挂载位置
+            data: {   // 模型数据 -- 一个对象
+                msg: 'Hello Vue',
+                name: 'Yes! I do',
+            }
+        })
+    </script>
+</body>
+
+</html>

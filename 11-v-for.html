@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <!-- 属性值必须加''号，否者就是变量 -->
+      <h2 :style='{color:"red",fontSize:"30px"}'>{{six}}</h2>
+      <li v-for='(item, index) in message'>{{index}}-{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        message: ['海王', '海尔兄弟', '舒克和贝塔', '进击的巨人'],
+        six: '火影忍者'
+      }
+    })
+  </script>
+</body>
+
+</html>
