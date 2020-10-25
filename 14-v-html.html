@@ -14,6 +14,14 @@
       background-color: blue;
       font-size: 50px;
     }
+
+    .color {
+      background-color: green;
+    }
+
+    .fontSize {
+      font-size: 50px;
+    }
   </style>
   <script src="./js/Vue.js"></script>
 </head>
@@ -24,18 +32,37 @@
     <!-- 利用bind：class绑定了一个变量，变量的名称为red -->
     <p v-bind:class="color">{{six}}</p>
     <p v-bind:class="style">{{six}}</p>
+    <!-- 三元表达式 -->
+    <p>{{1==3?'yes':'no'}}</p>
+    <p>{{ok?'yes':'no'}}</p>
+    <!-- split方法可以将字符串分隔后合并成为新的数组 -->
+    <!-- reverse方法可以将字符串翻转 -->
+    <!-- join可以将数组按指定的形式分成字符串 -->
+    <p>{{str.split('').reverse().join('')}}</p>
+    <!-- class 对象的方式 -->
+    <p v-bind:class="{color:color,fontSize:size}">{{six}}</p>
   </div>
   <script>
     const app = new Vue({
       el: "#app",
       data: {
+
         msg: '<span style="color:red;font-size:50px" >李银河</span>',
         six: '这是利用bind添加类名的方式添加的文本颜色',
         // 声明了一个变量，值为red
         color: 'red',
-        style: 'blue'
+        style: 'blue',
+        ok: true,
+        str: 'Vue',
+        color: true,
+        size: true,
       }
     })
+    let str = 'pink-red-greend';
+    let arr = str.split('-');
+    let newStr = arr.join(' ')
+    console.log(arr);
+    console.log(newStr);
   </script>
 </body>
 
