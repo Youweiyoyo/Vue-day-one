@@ -41,12 +41,15 @@
     <p>{{str.split('').reverse().join('')}}</p>
     <!-- class 对象的方式 -->
     <p v-bind:class="{color:color,fontSize:size}">{{six}}</p>
+    <p>{{num}}</p>
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+    <button @click="btnClick(123,$evevt)">-</button>
   </div>
   <script>
     const app = new Vue({
       el: "#app",
       data: {
-
         msg: '<span style="color:red;font-size:50px" >李银河</span>',
         six: '这是利用bind添加类名的方式添加的文本颜色',
         // 声明了一个变量，值为red
@@ -56,6 +59,18 @@
         str: 'Vue',
         color: true,
         size: true,
+        num: 0,
+      },
+      methods: {
+        add() {
+          this.num++;
+        },
+        sub() {
+          this.num--;
+        },
+        btnClick(abc){
+          console.log(abc,event);
+        }
       }
     })
     let str = 'pink-red-greend';
@@ -63,6 +78,20 @@
     let newStr = arr.join(' ')
     console.log(arr);
     console.log(newStr);
+    // <!-- es6 增强写法 -->
+    const name = 'zs'
+    const age = 18
+    const grend = '男'
+    const obj = {
+      name,
+      age,
+      grend,
+      fn() {
+        console.log('es6新方法');
+      }
+    }
+    console.log(obj);
+    obj.fn()
   </script>
 </body>
 
