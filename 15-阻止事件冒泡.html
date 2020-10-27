@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <!-- 事件冒泡  -->
+  <div id="app" @click="btn">
+    我是一个Div
+    <!-- 利用修饰符 .stop来阻止事件冒泡 -->
+    <button @click.stop='btnClick("abc",$event)'>{{mas}}</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        mas: '按钮'
+      },
+      methods: {
+        btnClick(abc, event) {
+          console.log(abc, event);
+        },
+        btn() {
+          console.log('点击了大盒子');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -44,7 +44,7 @@
     <p>{{num}}</p>
     <button @click="add">+</button>
     <button @click="sub">-</button>
-    <button @click="btnClick(123,$evevt)">-</button>
+    <button @click="btnClick('123',$event)">按钮</button>
   </div>
   <script>
     const app = new Vue({
@@ -60,6 +60,7 @@
         color: true,
         size: true,
         num: 0,
+        
       },
       methods: {
         add() {
@@ -68,8 +69,8 @@
         sub() {
           this.num--;
         },
-        btnClick(abc){
-          console.log(abc,event);
+        btnClick(abc,event){
+          console.log('1111');
         }
       }
     })
