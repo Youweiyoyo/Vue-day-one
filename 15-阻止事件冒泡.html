@@ -14,6 +14,8 @@
     我是一个Div
     <!-- 利用修饰符 .stop来阻止事件冒泡 -->
     <button @click.stop='btnClick("abc",$event)'>{{mas}}</button>
+    <input type="text" @keyup.enter="keyup">
+    <button @click.once="btnClicket">按钮</button>
   </div>
 
   <script>
@@ -28,6 +30,12 @@
         },
         btn() {
           console.log('点击了大盒子');
+        },
+        keyup() {
+          console.log('按下了键盘');
+        },
+        btnClicket() {
+          console.log('点击了按钮');
         }
       }
     });

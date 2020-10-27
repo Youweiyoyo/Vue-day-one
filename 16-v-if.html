@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<!-- v-if的使用，用一个变量false来接收参数（布尔值）-->
+
+<body>
+  <div id="app">
+    <div v-if="isshow">{{mag}}</div>
+    <div v-else>isshow为false时显示</div>
+    <!-- 判断成绩 -->
+    <div>{{fn}}</div>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        mag: 'v-if的使用',
+        isshow: false,
+        num: 90,
+      },
+      computed: {
+        fn() {
+          let str = '';
+          if (this.num >= 90) {
+            str = '优秀'
+          } else if (this.num >= 80) {
+            str = '良好'
+          } else if (this.num >= 70) {
+            str = '好'
+          }
+          return str;
+        }
+      }
+    });
+    // let str = 'abc123';
+    // for (let i = 0; i < str.length; i++) {
+    //   if (typeof str.indexOf(i) === Number) {
+    //     console.log('true');
+    //   }
+    // }
+  </script>
+</body>
+
+</html>
