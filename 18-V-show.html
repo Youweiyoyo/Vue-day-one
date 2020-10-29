@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-if：在值为true重新创建这个元素让标签显示，在值为false时去除整个标签 -->
+    <!-- 当隐藏与显示切换频繁时，使用isshow,只有一次切换时,使用 v-if -->
+    <h2 v-if='isshow'>{{mag}}</h2>
+    <!-- v-show：在值为true时显示标签，在值为false时给标签添加display="nono"属性 -->
+    <h2 v-show='isshow'>{{mag}}</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        mag: '李银河',
+        isshow: true
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

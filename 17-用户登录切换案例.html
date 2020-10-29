@@ -12,11 +12,12 @@
   <div id="app">
     <span v-if='isUser'>
       <label for="username">用户账号</label>
-      <input type="text" id="username" placeholder="请输入账号">
+      <!-- 添加key属性，让input不被复用 -->
+      <input type="text" id="username" placeholder="请输入账号" key="username">
     </span>
     <span v-else>
       <label for="userEamil">用户邮箱</label>
-      <input type="eamil" id="userEamil" placeholder="请输入邮箱">
+      <input type="eamil" id="userEamil" placeholder="请输入邮箱" key="eamil">
     </span>
     <button @click='fn'>点击切换状态</button>
     <button @click='isUser = !isUser'>点击切换状态</button>

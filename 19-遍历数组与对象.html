@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 遍历数组 -->
+    <ul>
+      <li v-for="item in arr">{{item}}</li>
+    </ul>
+    <ul>
+      <!-- item 为与元素   index为元素的下标  -->
+      <li v-for="(item ,index) in arr">{{index + 1}} {{item}}</li>
+    </ul>
+    <!-- 遍历对象 -->
+    <ul>
+      <!-- 可以传递三个 参数 key valye index -->
+      <li v-for="(key,value ,index) in obj">{{index}}:{{value}}:{{key}}</li>
+    </ul>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        arr: ['pink', 'red', 'green'],
+        obj: {
+          name: 'zs',
+          age: 18,
+          sex: '男'
+        }
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
