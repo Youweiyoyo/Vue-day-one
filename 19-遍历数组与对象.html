@@ -23,6 +23,8 @@
       <!-- 可以传递三个 参数 key valye index -->
       <li v-for="(key,value ,index) in obj">{{index}}:{{value}}:{{key}}</li>
     </ul>
+    <!-- 按钮 -->
+    <button @click='btnclick'>按钮</button>
   </div>
 
   <script>
@@ -36,7 +38,17 @@
           sex: '男'
         }
       },
-      methods: {}
+      methods: {
+        btnclick() {
+          // splice 可以删除，也可以添加元素
+          // 从第一个位置开始，向后面删除两个
+          // this.arr.splice(1, 2,)
+          // 从第一个位置开始，向后面添加两个
+          this.arr.splice(3, 0, 'bluer', 'yellow')
+          // Vue.set(要修改的对象，索引值，修改后的值)
+          Vue.set(this.arr, 1, 'sport')
+        }
+      }
     });
   </script>
 </body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 如果只传一个参数，事件对象必须是$event，固定写法 -->
+    <button @click="btn1($event)">{{msg}}</button>
+    <!-- 传入多个参数时，事件对象必须作为最后一个参数显示传递写在最后面 -->
+    <button @click="btn2(123,456,$event)">{{msg}}</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '按钮'
+      },
+      methods: {
+        btn1(event) {
+          console.log(event);
+          // 事件对象的target当前点击了哪一个按钮， tagName返回当前标签的名称 
+          console.log(event.target.tagName);
+        },
+        btn2(a, b, event) {
+          console.log(a, b);
+          console.log(event.target.innerHTML);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

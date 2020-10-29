@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <!-- v-model 实现双向绑定 -->
+  <!-- 修改表单中的值会影响页面的显示，反过来，页面中的值又会影响获取到的数据的值 -->
+  <div id="app">
+    <h2>{{msg}}</h2>
+    <input type="text" v-model="msg">
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hellow Vue'
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <!-- 案例思路 -->
+  <!-- 定义一个变量，让 -->
+  <div id="app">
+    <ul>
+      <li v-for='(item,index) in mag' :class="{red:currenIndex === index}" @click="btnClick(index)">
+        {{item}}
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        mag: ['pink', 'red', 'green', 'yellow'],
+        currenIndex: 0,
+      },
+      methods: {
+        btnClick(index) {
+          this.currenIndex = index;
+        }
+      }
+    });
+  </script>
+  <script>
+    
+  </script>
+</body>
+
+</html>
