@@ -10,6 +10,7 @@
 
 <body>
   <div id="app">
+    <h1>计算器案例</h1>
     <div>
       请输入数字：<input type="text" v-model="a">
     </div>
@@ -23,7 +24,10 @@
       <button @click="divide">除法</button>
       <button @click="pf">平方</button>
     </div>
-    <h4>{{reslet}}</h4>
+    <div>
+      计算结果：
+      <h3>{{reslet}}</h3>
+    </div>
   </div>
 
   <script>
