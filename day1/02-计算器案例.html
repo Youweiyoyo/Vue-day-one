@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      请输入数字：<input type="text" v-model="a">
+    </div>
+    <div>
+      请输入数字：<input type="text" v-model="b">
+    </div>
+    <div>
+      <button @click="add">加法</button>
+      <button @click="sub">减法</button>
+      <button @click="ride">乘法</button>
+      <button @click="divide">除法</button>
+      <button @click="pf">平方</button>
+    </div>
+    <h4>{{reslet}}</h4>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        a: '',
+        b: '',
+        reslet: ''
+      },
+      methods: {
+        add() {
+          this.reslet = parseInt(this.a) + parseInt(this.b);
+        },
+        sub() {
+          this.reslet = parseInt(this.a) - parseInt(this.b);
+        },
+        ride() {
+          this.reslet = parseInt(this.a) * parseInt(this.b);
+        },
+        divide() {
+          this.reslet = parseInt(this.a) / parseInt(this.b);
+        },
+        pf() {
+          this.reslet = (parseInt(this.a) + parseInt(this.b)) * 2
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
