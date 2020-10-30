@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // filter函数
+    const arr = [10, 20, 30, 40, 111, 222, 333];
+    let newArr = arr.filter((n) => {
+      return n < 100;
+    })
+    console.log(newArr);
+    // map 函数
+    const arr2 = [10, 20, 30, 40];
+    let newarr2 = arr2.map((n) => {
+      return n * 2
+    })
+    console.log(newarr2);
+    // reduce
+    const arr3 = [10, 20, 30, 40];
+    let newarr3 = arr3.reduce((value, item) => {
+      return value + item
+    }, 30)
+    console.log(newarr3);
+  </script>
+</body>
+
+</html>

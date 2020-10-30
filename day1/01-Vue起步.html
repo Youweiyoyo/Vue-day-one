@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- {{}}  插值表达式用法将数据填充到HTML标签中  插值表达式支持基本的计算操作 -->
+    <!-- v-cloak 解决元素闪动问题 -->
+    <h2 v-cloak>{{msg}}</h2>
+    <h2>{{1 + 2}}</h2>
+    <h2>{{info}}</h2>
+    <h2 v-html="bq"></h2>
+    <h2 v-text='bq2'></h2>
+    <!-- v-pre显示原始信息 -->
+    <h2 v-pre>{{msg}}</h2>
+    <input type="text" v-model="bq2">
+    <button @click="btn(2,1,$event)">按钮</button>
+    <button v-on:click="btn2">按钮</button>
+    <a href="javcscript" v-on:click.prevent="btn3">.prevent阻止页面跳转行为</a>
+    <form action="">
+      <input type="text" v-on:keyup='btn5'>
+      <input type="text" v-on:keyup.enter="btn6">
+      <button >按钮</button>
+      <button v-on:keyup.delete>按钮</button>
+    </form>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app', // el 元素的挂载位置（值可以是CSS选择器或者DOM元素）
+      data: {    // data  模型数据  （一个对象）
+        msg: 'hello Vue',
+        info: 'Vue冲冲冲！',
+        bq: "<p>我是V-HTML加载的P标签</p>",
+        bq2: "<p>我是V-text加载的纯文本P标签</p>",
+      },
+      methods: {
+        btn(a, b, e) {
+          console.log(a, b, e);
+        },
+        btn2(e) {
+          console.log(e);
+        },
+        btn5(e) {
+          console.log(e.keyCode);
+        },
+        btn6() {
+          console.log('hahahaa');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
