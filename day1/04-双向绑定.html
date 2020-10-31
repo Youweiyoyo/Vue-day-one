@@ -12,6 +12,7 @@
   <div id="app">
     <div>{{msg}}</div>
     <input type="text" v-bind:value="msg" v-on:input="ipt">
+    <input type="text" v-on:input="ipt">
     <input type="text" v-bind:value="msg" v-on:input="msg=$event.target.value">
   </div>
   <!-- v-model 底层实现原理 -->
@@ -26,6 +27,7 @@
         ipt(e) {
           // 使用输入域中的最新的数据来覆盖原来的数据
           this.msg = e.target.value
+          console.log(e.target.value);
         }
       }
     });
