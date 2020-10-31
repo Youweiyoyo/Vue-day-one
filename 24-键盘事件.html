@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <form action="">
+      <input type="text" v-on:keyup.delete='del' v-model='name'>
+      <input type="text" v-on:keyup.enter="ipt" v-model='age'>
+      <input type="text" v-on:keyup.65="ipts" v-model='six'>
+      <input type="text" v-on:keyup v-model='six'>
+      <input type="button" value="提交">
+    </form>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        age: '',
+        six: '',
+      },
+      methods: {
+        ipt() {
+          console.log('啊哈哈哈');
+        },
+        del() {
+          this.name = '';
+          this.age = '';
+        },
+        ipts(e) {
+          console.log(e.keyCode);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
