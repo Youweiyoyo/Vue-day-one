@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active ,
+    .isactive {
+      color: red;
+    }
+
+    .bgc ,
+    .isbgc {
+      background-color: blue;
+    }
+  </style>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2 v-bind:class="{active:isactive,bgc:isbgc}">{{msg}}</h2>
+    <h2 :class="[active,bgc]">{{msg}}</h2>
+    <button @click="but">按钮</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '样式操作',
+        isactive: true,
+        isbgc: true,
+        active: 'isactive',
+        bgc: 'isbgc',
+      },
+      methods: {
+        but(e) {
+          this.isactive = !this.isactive;
+          this.isbgc = !this.isbgc;
+          this.active = '';
+          this.bgc = '';
+          console.log(e.target.tarName);;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

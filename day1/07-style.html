@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 对象用法 -->
+    <div :style="{border:styleBorder,width:styleWidth,height:styleHeight}"></div>
+    <!-- 数组用法 -->
+    <div :style="[objStyle]"></div>
+    <!-- 数组的第二种用法 -->
+    <div :style='[objStyle ,objarrStyle]'></div>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        styleWidth: '100px',
+        styleBorder: '1px solid red',
+        styleHeight: '200px',
+        objStyle: {
+          border: '1px solid yellow',
+          width: '200px',
+          height: '200px',
+        },
+        objarrStyle: {
+          backgroundColor: 'red'
+        },
+      }
+    });
+  </script>
+</body>
+
+</html>
