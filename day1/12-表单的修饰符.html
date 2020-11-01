@@ -5,19 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./js/Vue.js"></script>
+  <script src="../js/Vue.js"></script>
 </head>
 
 <body>
   <div id="app">
-    
+    <!-- number 可以将表单中的字符串值转换成数值型 -->
+    <input type="text" v-model.number="num">
+    <!-- trim 可以将表单中开头和结尾的空格字符串去除掉 -->
+    <input type="text" v-model.trim="infor">
+    <!-- lazy 可以将表单的input事件转化成为change事件 -->
+    <!-- input事件是表单内的值发生改变的时候触发的 -->
+    <!-- change事件是表单失去焦点时触发的 -->
+    <input type="text" v-model.lazy="lay">
+    <h2>{{lay}}</h2>
+    <button @click="btn">按钮</button>
   </div>
 
   <script>
     var vm = new Vue({
       el: '#app',
-      data: {},
-      methods: {}
+      data: {
+        num: '',
+        infor: '',
+        lay:''
+      },
+      methods: {
+        btn() {
+          console.log(this.num + 10);
+          console.log(this.infor.length);
+        },
+      }
     });
   </script>
 </body>

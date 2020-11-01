@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自定义Vue指令</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-color="msg">
+  </div>
+  <script>
+    // Vue.directive('focus', {
+    //   inserted(el) {
+    //     // el 表示指令所绑定的元素
+    //     el.focus();
+    //   }
+    // })
+    Vue.directive('color', {
+      // el 表示指令所绑定的元素
+      bind: function (el, binding) {
+        // 改变背景颜色
+        el.style.backgroundColor = binding.value;
+        // 以对象的方式传递参数改变背景颜色
+        // el.style.backgroundColor = binding.value.color;
+        console.log(binding);
+        console.log(binding.value.color);  // undefined
+        console.log(binding.name); //打印出来的name是指令名：不包括 V-前缀
+        console.log(binding.value);//打印出来的value是指令的绑定值：color绑定了 "red"这个值
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        // 第一种传递方式
+        msg: "yellow",
+        // 以对象的形式传递参数
+        msg: {
+          color: 'red'
+        }
+      },
+      methods: {}
+    });
+
+  </script>
+</body>
+
+</html>
