@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <span>姓:</span>
+      <input type="text" v-model="forstName">
+    </div>
+    <div>
+      <span>名:</span>
+      <input type="text" v-model="lastName">
+    </div>
+    <h2>{{fullName}}</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        fullName: '',
+        forstName: '',
+        lastName: ''
+      },
+      methods: {},
+      computed: {},
+      watch: {
+        forstName(val) {
+          this.fullName = val + this.lastName;
+        },
+        lastName(val) {
+          this.fullName = this.forstName + val
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
