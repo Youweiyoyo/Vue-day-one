@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <!-- v-for()内传递三个值 value(属性值)，key(属性名)，index(索引) -->
+      <!-- 不要把v-if和v-for用在同一个元素上，由于v-for优先级高，所以会先循环，在判断是否隐藏，这样会影响性能开销 -->
+      <li v-if="value==12" v-for='(v,k,i) in obj'>{{v+"----"+k+'---'+i}}</li>
+    </ul>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        obj: {
+          name: 'zs',
+          age: 18,
+          sex: '男'
+        },
+        value: 12
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

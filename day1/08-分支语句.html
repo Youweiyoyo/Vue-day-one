@@ -10,13 +10,20 @@
 
 <body>
   <div id="app">
-
+    <div v-if="scurren>=90">优秀</div>
+    <div v-else-if="scurren<90 && scurren>=80">良好</div>
+    <div v-else-if="scurren<70 && scurren>=60">刚好及格</div>
+    <div v-else>不及格</div>
+    <div v-show='buler'>哈哈哈</div>
   </div>
 
   <script>
     var vm = new Vue({
       el: '#app',
-      data: {},
+      data: {
+        scurren: 60,
+        buler:false
+      },
       methods: {}
     });
   </script>
