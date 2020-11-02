@@ -10,37 +10,42 @@
 
 <body>
   <div id="app">
-    <span>请输入用户名</span>
+    <span>请输入用户名：</span>
     <input type="text" v-model.lazy="uname">
-    <div>{{msg}}</div>
+    <h2>{{msg}}</h2>
   </div>
 
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        msg: '',
         uname: '',
+        msg: '',
       },
       methods: {
         checkName(uname) {
-          var that = this
-          setInterval(() => {
-            if (uname == "adimn") {
-              that.msg = "用户名已经被占用,请重新输入"
+          var that = this;
+          setTimeout(() => {
+            if (uname == "admin") {
+              that.msg = "用户名已经被占用，请使用其它用户名"
             } else {
-              that.msg = "用户名合法，可以使用"
+              that.msg = '用户名可以使用'
             }
           }, 2000)
         }
       },
+      //计算属性
       computed: {},
+      //侦听器
       watch: {
-        uanme(val) {
+        // 监控表单的变化，执行函数
+        uname(val) {
+          // 调用后台接口验证用户名的合法性
+          // 调用函数，将uname中的值val传递给chekName这个函数
           this.checkName(val);
-          this.msg = "正在验证，请稍后";
+          this.msg = "正在验证,请稍后...";
         }
-      }
+      },
     });
   </script>
 </body>

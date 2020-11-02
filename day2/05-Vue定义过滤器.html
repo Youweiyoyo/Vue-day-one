@@ -10,23 +10,25 @@
 
 <body>
   <div id="app">
-    <input type="text" v-focus>
+    <input type="text" v-model="msg">
+    <h2>{{msg | upper}}</h2>
   </div>
 
   <script>
-    Vue.directive('focus', {
-      inserted(el) {
-        el.focus();
-        
-      }
-    });
+    Vue.filter('upper', (val) => {
+      // upper是过滤器名
+      // val 是input绑定的msg的值
+      return val.charAt(0).toUpperCase() + val.slice(1);
+    })
     var vm = new Vue({
       el: '#app',
       data: {
-
+        msg: '',
       },
       methods: {},
+      //计算属性
       computed: {},
+      //侦听器
       watch: {},
     });
   </script>

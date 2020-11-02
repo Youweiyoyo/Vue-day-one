@@ -10,20 +10,25 @@
 
 <body>
   <div id="app">
-    <input type="text" v-focus>
+    <input type="text" v-color="msg">
   </div>
 
   <script>
-    Vue.directive('focus', {
-      inserted(el) {
-        el.focus();
-        
+    // bind 只调用一次
+    Vue.directive('color', {
+      bind(el, binding) {
+        console.log(binding);
+        // binding.value用来接收数据
+        el.style.backgroundColor = binding.value.color
       }
-    });
+    })
     var vm = new Vue({
       el: '#app',
       data: {
-
+        // msg: 'red',
+        msg: {
+          color: "yellow"
+        }
       },
       methods: {},
       computed: {},

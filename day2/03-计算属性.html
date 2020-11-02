@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{msg}}</h2>
+    <h2>{{res}}</h2>
+    <div>
+      <input type="text" v-model="firstName">
+    </div>
+    <div>
+      <input type="text" v-model="lastName">
+    </div>
+    <div>{{fullName}}</div>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello word',
+        fullName: '',
+        firstName: '',
+        lastName: '',
+      },
+      methods: {},
+      //计算属性
+      computed: {
+        res() {
+          return this.msg.split('').reverse().join('')
+        }
+      },
+      //侦听器
+      watch: {
+        firstName(val) {
+          console.log(val);  // val接收到的是firstName的值 
+          this.fullName = val + this.lastName
+        },
+        lastName(val) {
+          console.log(val);// val接收到的是lastName的值
+          this.fullName = this.firstName + val
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
