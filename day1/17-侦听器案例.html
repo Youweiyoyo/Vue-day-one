@@ -10,35 +10,35 @@
 
 <body>
   <div id="app">
-    <span>请输入用户名：</span>
+    <span>请输入用户名</span>
     <input type="text" v-model.lazy="uname">
-    <span>{{msg}}</span>
+    <div>{{msg}}</div>
   </div>
 
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        uname: '',
         msg: '',
+        uname: '',
       },
       methods: {
         checkName(uname) {
-          var that = this;
+          var that = this
           setInterval(() => {
-            if (uname == 'admin') {
-              that.msg = '用户名已经存在';
+            if (uname == "adimn") {
+              that.msg = "用户名已经被占用,请重新输入"
             } else {
-              that.msg = '用户名合法，可以使用';
+              that.msg = "用户名合法，可以使用"
             }
           }, 2000)
         }
       },
       computed: {},
       watch: {
-        uname(val) {
+        uanme(val) {
           this.checkName(val);
-          this.msg = '正在验证，请稍后';
+          this.msg = "正在验证，请稍后";
         }
       }
     });
