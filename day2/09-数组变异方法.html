@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="msg">
+    <ul>
+      <li :key="index" v-for="(item,index) in arr">{{item}}</li>
+    </ul>
+    <div>
+      <button @click="btn">点击添加元素</button>
+      <button @click="btn2">点击删除元素</button>
+      <button @click="btn3">替换元素</button>
+    </div>
+  </div>
+
+  <script>
+    var arr = [1, 2, 3, 4, 5, 6];
+    console.log(arr.splice(1, 2, 8, 9)); // 23
+    console.log(arr);  // 返回新数组  18923456
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '',
+        arr: ['apple', 'orenge', 'banana']
+      },
+      methods: {
+        btn() {
+          this.arr.push(this.msg);
+        },
+        btn2() {
+          this.arr.pop();
+        },
+        btn3() {
+          // slice 从下标为 0 的位置开始截取，截取下标为2之前的元素 
+          this.arr = this.arr.slice(0, 1);
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+    // vm.arr[1] = 'red';
+    vm.$set(vm.arr, 1, 'red');
+  </script>
+</body>
+
+</html>
