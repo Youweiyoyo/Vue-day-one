@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <menu-item :msg="pmsg" :info="info"></menu-item>
+  </div>
+
+  <script>
+    Vue.component('menu-item', {
+      props: ['title', 'info'],
+      data() {
+        return {
+          msg: '子组件本身的数据'
+        }
+      },
+      template: `
+        <div>{{msg}}</div>
+        <div>{{info}}</div>
+      `
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        pmsg: '父组件本身的数据',
+        abc: '123'
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

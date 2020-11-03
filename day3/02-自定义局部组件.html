@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <hello-world></hello-world>
+    <hello-tom></hello-tom>
+    <hello-jerry></hello-jerry>
+    <hello-jQyery></hello-jQyery>
+  </div>
+  <script>
+    var HelloWorld = {
+      data() {
+        return {
+          msg: 'HelloWorld'
+        }
+      },
+      template: `<div>{{msg}}</div>`
+    };
+    var Hellotom = {
+      data() {
+        return {
+          msg: 'HelloWorldA'
+        }
+      },
+      template: `<div>{{msg}}</div>`
+    };
+    // 组件名
+    var HelloWorldB = {
+      data() {
+        return {
+          msg: 'HelloWorldB'
+        }
+      },
+      template: `<div>{{msg}}</div>`
+    };
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components: {
+        'hello-world': HelloWorld,
+        'hello-tom': Hellotom,
+        // 标签名      组件名
+        'hello-jerry': HelloWorldB,
+      }
+    });
+  </script>
+</body>
+
+</html>
