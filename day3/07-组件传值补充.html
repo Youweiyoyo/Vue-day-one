@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{a}}</div>
+        <my-main></my-main>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+
+        var hub = new Vue()
+
+        Vue.component('my-sub2', {
+            data: function () {
+                return {
+                    num: 1000
+                }
+            },
+            template: `
+            <div>
+                {{num}}
+            </div>
+            `,
+            mounted: function () {
+                hub.$on('my-hub', (val) => {
+                    // console.log('my-hub', val);
+                    this.num -= val
+                })
+            }
+        })
+
+        Vue.component('my-sub', {
+            props: ['info'],
+            data: function () {
+                return {
+                    num: 200
+                }
+            },
+            template: `
+            <div>
+                <div>{{info}}</div>
+                <div>{{num}}</div>
+                <button @click="handle">sub-click</button>
+            </div>
+            `,
+            methods: {
+                handle: function () {
+                    // console.log(this.num);
+                    this.$emit('my-event', this.num)
+                    hub.$emit('my-hub', this.num)
+                }
+            }
+        })
+
+        Vue.component('my-main', {
+            data: function () {
+                return {
+                    msg: 'main',
+                    num: 100
+                }
+            },
+            template: `
+            <div>
+                <div>{{msg}} {{num}}</div>
+                <my-sub :info="num" @my-event="handle($event)"></my-sub>
+                <my-sub2></my-sub2>
+            </div>`,
+            methods: {
+                handle: function (val) {
+                    // console.log('main-handle', val);
+                    this.num += val;
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: '这是根组件'
+            }
+        })
+    </script>
+</body>
+
+</html>

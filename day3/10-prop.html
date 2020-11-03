@@ -10,30 +10,33 @@
 
 <body>
   <div id="app">
-    <menu-item :msg="pmsg"></menu-item>
-    <menu-item :info="info"></menu-item>
+    <!-- 
+      添加 : 和不添加 ：的区别：
+      添加 ： 后属性值为 数值类型
+      不添加 ：属性值为 字符串类型
+    -->
+    <A-A-A title="12" :counst="12"></A-A-A>
   </div>
 
   <script>
-    Vue.component('menu-item', {
-      props: ['title', 'info'],
+    // 这里使用驼峰命名法，或者使用这种连写的 上面使用标签时必须使用  - （短横线）链接
+    Vue.component('AAA', {
+      props: ['title', 'counst'],
       data() {
         return {
-          msg: '子组件本身的数据',
-          info: '123'
+          msg: 10
         }
       },
       template: `
-        <div>{{msg}}</div>
-        <div>{{info}}</div>
+      <div>
+      <div>{{msg}}+{{title}}</div>
+      <div>{{msg + counst}}</div>
+      </div>
       `
     })
     var vm = new Vue({
       el: '#app',
-      data: {
-        pmsg: '父组件本身的数据',
-        abc: '123'
-      },
+      data: {},
       methods: {},
       //计算属性
       computed: {},

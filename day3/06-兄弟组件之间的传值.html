@@ -9,31 +9,34 @@
 </head>
 
 <body>
-  <div id="app">
-    <menu-item :msg="pmsg"></menu-item>
-    <menu-item :info="info"></menu-item>
-  </div>
+
+  <div id="app"></div>
 
   <script>
-    Vue.component('menu-item', {
-      props: ['title', 'info'],
+    Vue.component('test-tom', {
       data() {
         return {
-          msg: '子组件本身的数据',
-          info: '123'
+          num: 0
         }
       },
-      template: `
-        <div>{{msg}}</div>
-        <div>{{info}}</div>
-      `
+      template: `<div>
+      <div>
+      TOM{{num}}
+      </div>
+      <div><buttom @click="btn">点击</buttom></div>
+      </div>`,
+      methods: {
+        btn() {
+
+        }
+      },
+      mounted() {
+        hub.$on('tom-even',)
+      }
     })
     var vm = new Vue({
       el: '#app',
-      data: {
-        pmsg: '父组件本身的数据',
-        abc: '123'
-      },
+      data: {},
       methods: {},
       //计算属性
       computed: {},

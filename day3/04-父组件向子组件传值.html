@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{pmsg}}</div>
+    <!-- 静态绑定到父组件 -->
+    <ment-item title="父组件传递过来的值"></ment-item>
+    <!-- 动态绑定到父组件  通过 : 来动态绑定数据，数据需要在父组件中定义 -->
+    <ment-item :title="ptitle"></ment-item>
+    <!-- 动态和静态结合绑定 -->
+    <ment-item :title="ptitle" conter="动态静态结合绑定"></ment-item>
+  </div>
+
+  <script>
+    //new Vue 本身就是一个根组件
+    //  全局组件  子组件
+    Vue.component('ment-item', {
+      props: ['title', 'conter'],
+      data() {
+        return {
+          msg: '子组件本身的数据'
+        }
+      },
+      template: `<div>{{msg}}-------{{title}}----{{conter}}</div>`
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        pmsg: '父组件本身的内容',
+        ptitle: '动态接收到父组件传递到子组件的值'
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

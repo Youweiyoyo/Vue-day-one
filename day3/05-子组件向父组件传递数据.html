@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div :style='{fontSize:fontSize+"px"}'>{{msg}}</div>
+    <futer :title='arr' @elatge-text="btn"></futer>
+  </div>
+
+  <script>
+    // 子组件
+    Vue.component('futer', {
+      props: ['title'],
+      template: `
+        <div>
+          <ul>
+            <li :key="index" v-for="(item,index) in title">{{item}}</li>
+          </ul>
+          <button @click="btn">按钮</button>
+          <button @click="$emit('elatge-text')">点击扩大父组件中字体大小</button>
+        </div>  
+      `,
+      methods: {
+        btn() {
+          // 通过在子组件中操作方法直接向父组件的数组中push进新元素
+          this.title.push('lemon')
+        }
+      }
+    });
+    // 父组件
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: "字体变大",
+        arr: ['apple', 'banana', 'porer'],
+        fontSize: 10
+      },
+      methods: {
+        btn() {
+          this.fontSize += 5;
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
