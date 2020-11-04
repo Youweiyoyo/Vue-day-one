@@ -10,34 +10,78 @@
 
 <body>
 
-  <div id="app"></div>
+  <div id="app">
+    <button @click="btn3">点击销毁事件</button>
+    <test-one></test-one>
+    <test-two></test-two>
+  </div>
 
   <script>
-    Vue.component('test-tom', {
+    // 提供事件中心
+    var hub = new Vue();
+    // 组件一
+    Vue.component('test-one', {
       data() {
         return {
           num: 0
         }
       },
-      template: `<div>
-      <div>
-      TOM{{num}}
-      </div>
-      <div><buttom @click="btn">点击</buttom></div>
-      </div>`,
+      template:
+        `<div>
+          <div>one{{num}}</div>
+          <button @click="btn1">点击增加</button>
+        </div>
+      `,
       methods: {
-        btn() {
-
+        btn1() {
+          // 触发兄弟组件二的监听事件
+          hub.$emit('two-event', 1)
         }
       },
       mounted() {
-        hub.$on('tom-even',)
+        //组件一自定义监听事件
+        hub.$on('one-event', (val) => {
+          this.num += val
+          console.log(val);
+        })
+      }
+    });
+    // 组件二
+    Vue.component('test-two', {
+      data() {
+        return {
+          num: 0
+        }
+      },
+      template:
+        `<div>
+          <div>two{{num}}</div>
+          <button @click="btn2">点击增加</button>
+        </div>
+      `,
+      methods: {
+        btn2() {
+          // 触发兄弟组件一监听的事件
+          hub.$emit('one-event', 1)
+        }
+      },
+      mounted() {
+        //组件二自定义监听事件
+        hub.$on('two-event', (val) => {
+          this.num += val
+          console.log(val);
+        })
       }
     })
     var vm = new Vue({
       el: '#app',
       data: {},
-      methods: {},
+      methods: {
+        btn3(){
+          hub.$off('two-event');
+          hub.$off('one-event');
+        }
+      },
       //计算属性
       computed: {},
       //侦听器

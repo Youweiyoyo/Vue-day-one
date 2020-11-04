@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .current {
+      color: red;
+    }
+  </style>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <furit-list :title='arr'></furit-list>
+    <template slot-scope="slotProps">
+      <strong v-if="slotProps.info.id == 2" class="current">{{slotProps.info.name}}</strong>
+      <span v-else>{{slotProps.info.name}}</span>
+    </template>
+  </div>
+
+  <script>
+    Vue.component('furit-list', {
+      props: ['title'],
+      template:
+        `
+      <div>
+        <ul>
+          <li :key="item.id" v-for="item in title">
+          <slot :info="item">{{item.name}}</slot>
+          </li>
+        </ul>
+      </div>
+      `
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        arr: [{
+          id: 1,
+          name: 'apple'
+        }, {
+          id: 2,
+          name: 'bababa'
+        }, {
+          id: 3,
+          name: 'poper'
+        }]
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

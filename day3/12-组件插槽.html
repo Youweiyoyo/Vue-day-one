@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <box-a>我是slot生成的插槽</box-a>
+    <box-a></box-a>
+  </div>
+
+  <script>
+    Vue.component('box-a', {
+      template:
+        `
+      <div>
+        <strong>ERROR</strong>
+        <slot>默认内容</slot>
+      </div>
+      `
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

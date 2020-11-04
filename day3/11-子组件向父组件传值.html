@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div :style="{fontSize:fontSize + 'px'}">{{msg}}</div>
+    <six-a :title="arr" @text="btn"></six-a>
+  </div>
+
+  <script>
+    Vue.component('six-a', {
+      props: ['title'],
+      template: `
+      <div>
+       {{typeof title}}
+       <ul>
+        <li :key='index' v-for="(item,index) in title">{{item}}</li>
+       </ul>
+        <button @click="btn">按钮</button>
+        <button @click="$emit('text',5)">点击扩大文字</button>
+      </div>
+      `,
+      methods: {
+        btn: function () {
+          this.title.push('lemon')
+          console.log(this);
+        }
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '放大文字',
+        arr: ['red', 'yellow', 'green'],
+        fontSize: 10,
+      },
+      methods: {
+        btn(val) {
+          this.fontSize += val
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

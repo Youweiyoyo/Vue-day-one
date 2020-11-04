@@ -11,7 +11,7 @@
 <body>
   <div id="app">
     <div :style='{fontSize:fontSize+"px"}'>{{msg}}</div>
-    <futer :title='arr' @elatge-text="btn"></futer>
+    <futer :title='arr' @elatge-text="btn($event)"></futer>
   </div>
 
   <script>
@@ -24,7 +24,7 @@
             <li :key="index" v-for="(item,index) in title">{{item}}</li>
           </ul>
           <button @click="btn">按钮</button>
-          <button @click="$emit('elatge-text')">点击扩大父组件中字体大小</button>
+          <button @click="$emit('elatge-text',5)">点击扩大父组件中字体大小</button>
         </div>  
       `,
       methods: {
@@ -43,8 +43,8 @@
         fontSize: 10
       },
       methods: {
-        btn() {
-          this.fontSize += 5;
+        btn(val) {
+          this.fontSize += val;
         }
       },
       //计算属性
