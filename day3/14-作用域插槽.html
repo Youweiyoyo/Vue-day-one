@@ -15,11 +15,13 @@
 
 <body>
   <div id="app">
-    <furit-list :title='arr'></furit-list>
-    <template slot-scope="slotProps">
-      <strong v-if="slotProps.info.id == 2" class="current">{{slotProps.info.name}}</strong>
-      <span v-else>{{slotProps.info.name}}</span>
-    </template>
+    <furit-list :title='arr'>
+      <template slot-scope="slotProps">
+        <strong v-if="slotProps.info.id==3" class="current">{{slotProps.info.name}}</strong>
+        <span v-else>{{slotProps.info.name}}</span>
+      </template>
+    </furit-list>
+
   </div>
 
   <script>
