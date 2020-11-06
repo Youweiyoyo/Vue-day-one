@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // fetch 常用配置选项
+    // 第一个参数是路径  第二个参数是请求方式
+    fetch('http://localhost:3000/fdata', {
+      methods: 'POST',
+      body: 'uname=lisi&pwd=123',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(() => {
+      console.log(data.text());
+      return data.text()
+    }).then((data) => {
+      console.log('ds', data);
+    })
+  </script>
+</body>
+
+</html>

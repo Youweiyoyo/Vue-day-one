@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery-1.11.1.js"></script>
+</head>
+
+<body>
+  <script>
+    function queryDate() {
+      var p = new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState !== 4) {
+            return;
+          };
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            resolve(xhr.responseText)
+          } else {
+            reject('服务器错误')
+          }
+        };
+        xhr.open('get', url);
+        xhr.send(null);
+      });
+      return p
+    }
+    // 发送多个ajax请求并保证顺序
+    queryDate('http://192.168.16:60:3000/data').then(function (data) {
+      console.log('data,data');
+      var p = queryDate('http://localhost:3000/data1')
+      return p
+    }).then(function (data) {
+      return queryDate('http://localhost:3000/data2')
+    }).then(function (data) {
+      console.log('data', data);
+    });
+
+  </script>
+</body>
+
+</html>

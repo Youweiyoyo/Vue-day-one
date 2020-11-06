@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/axios.js"></script>
+</head>
+
+<body>
+  <script>
+    // get :  查询数据
+    // post: 添加数据
+    // 三种传参方式
+    axios.get('http://localhost:3000/axios?id=123', {
+      params: {
+        id: 789
+      }
+    }).then((ret) => {
+      console.log(ret.data);
+    });
+    axios.get('http://localhost:3000/axios/123').then((ret) => {
+      console.log(ret.data);
+    });
+    axios.delete('http://localhost:3000/axios/123', {
+      params: {
+        id: 111
+      }
+    }).then((ret) => {
+      console.log(ret.data);
+    })
+  </script>
+</body>
+
+</html>
