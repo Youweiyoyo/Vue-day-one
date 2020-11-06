@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+  <script src="./js/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/user/1">user1</router-link>
+    <router-link to="/user/2">user2</router-link>
+    <router-link to="/user/3">user3</router-link>
+    <router-link to="/register">register</router-link>
+    <!-- 路由占位符 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const user = {
+      template: `<h1>User组件--用户id为:{{$route.params.id}}</h1>`
+    };
+    const register = {
+      template: `<h1>register</h1>`
+    };
+    // 创建路由实例对象
+    const router = new VueRouter({
+      // 路由规则
+      routes: [
+        { path: "/", redirect: '/user' },
+        { path: '/user/:id', component: user },
+        { path: '/register', component: register }
+      ]
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      // 挂载路由实例对象
+      // router: router,
+      router,
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

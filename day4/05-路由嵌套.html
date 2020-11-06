@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+  <script src="./js/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/user">user</router-link>
+    <router-link to="/register">register</router-link>
+    <!-- 路由占位符 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const user = {
+      template: `<h1>User组件</h1>`
+    };
+    const register = {
+      template: `
+      <div>
+        <h1>register</h1>
+        <hr/>
+        <!-- 子路由链接 -->
+        <router-link to="/register/tab1">tab1</router-link>
+        <router-link to="/register/tab2">tab2</router-link>
+        <!-- 子路由占位符 -->
+        <router-view></router-view>
+      </div>
+      `
+    };
+    // 嵌套的子组件
+    const Tab1 = {
+      template: `
+      <h3>tab子组件1</h3>
+      `
+    };
+    const Tab2 = {
+      template: `<h3>tab子组件2</h3>`
+    };
+    // 创建路由实例对象
+    const router = new VueRouter({
+      // 路由规则
+      routes: [
+        { path: "/", redirect: '/user' },
+        { path: '/user', component: user },
+        {
+          path: '/register', component: register,
+          // 父组件中的子组件规则
+          // children数组中定义子路由
+          children: [
+            { path: '/register/Tab1', component: Tab1, },
+            { path: '/register/Tab2', component: Tab2, },
+          ]
+        }
+      ]
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      // 挂载路由实例对象
+      // router: router,
+      router,
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
