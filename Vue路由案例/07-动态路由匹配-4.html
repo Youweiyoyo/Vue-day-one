@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 1.引入Vuejs 和 VueRouter.js -->
+  <script src="../js/Vue.js"></script>
+  <script src="../day4/js/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <!-- 被Vue所控制的区域 -->
+  <div id="app">
+    <!-- 2.添加路由相关链接 -->
+    <router-link to="/User/1">User1</router-link>
+    <router-link to="/User/2">User2</router-link>
+    <router-link to="/User/3">User3</router-link>
+    <router-link to="/User/4">User4</router-link>
+    <router-link to="/Register">register</router-link>
+    <!-- 3.添加路由占位符 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    // 4.定义路由组件
+    const User = {
+      // 通过props传参
+      props: ['id', 'uname', 'age'],
+      template: ` <h1>User 组件--{{id}}---姓名为:{{uname}}---年龄为:{{age}}</h1>`
+    };
+    const Register = {
+      template: ` <h1>Register 组件</h1>`
+    };
+    // 5.配置路由规则并创建路由实例
+    var router = new VueRouter({
+      routes: [
+        { path: '/', redirect: '/User' },
+        // path是路径 component是要展示的组件 props:=>({})以箭头函数的形式来传递参数
+        { path: '/User/:id', component: User, props: route => ({ uname: 'lisi', age: 18, id: route.params.id }) },
+        { path: '/Register', component: Register }
+      ]
+    })
+    var vm = new Vue({
+      el: '#app',
+      // 6.将路由挂载在Vue的根实例上
+      router,
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
