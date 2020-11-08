@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/axios.js"></script>
+</head>
+
+<body>
+  <script>
+    // 以问号拼接的形式传递参数
+    axios.get('http://localhost:3000/axios?id=123').then(function (ret) {
+      console.log(ret.data);
+    });
+    // 通过params对象来传递参数
+    axios.get('http://localhost:3000/axios?id=123', {
+      prams: {
+        id: 789
+      }
+    }).then(function (ret) {
+      console.log(ret.data);
+    });
+    // POST提交数据
+    axios.post('/adata', {
+      uname: 'zs',
+      pwd: 123
+    }).then(function (ret) {
+      console.log(ret.data);
+    })
+    // 另一种提交方式
+    var prams = new URLSearchParams();
+    prams.append('uname', 'zhangsan');
+    prams.append('pwd', '111');
+    axios.post('http://localhost:3000/axios', params).then(function (ret) {
+      console.log(ret.data);
+    })
+  </script>
+</body>
+
+</html>

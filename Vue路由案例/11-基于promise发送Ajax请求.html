@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function queryDate(url) {
+      // 1.先实例化promise
+      var p = new Promise(function (resolve, reject) {
+        // 创建XML实例对象
+        var xhr = XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState != 4) {
+            return
+          };
+          if (xhr.readyState != 4 && xhr.status == 200) {
+            // 处理正常情况
+            resolve(xhr.responseText);
+          } else {
+            // 处理异常情况
+            reject('服务器错误')
+          }
+        };
+        xhr.open('get', url);
+        xhr.send(null);
+      })
+      return p;
+    }
+    // queryDate('http//localhost:3000/data')
+    // .then(function (data) {
+    //     console.log(data);
+    //   }, function (info) {
+    //     console.log(info);
+    //   })
+    // 发送多个Ajax请求并且保证顺序
+    // return的是新的promise的实例对象，下一个.then的调用者就是上一个promise的实例对象，并且.then中的函数的参数(data)接收上一个异步任务的处理结果
+    queryDate('http://localhost:3000/data')
+      .then(function (data) {
+        console.log(data);
+        return queryDate('http://localhost:3000/data');
+      })
+      .then(function (data) {
+        console.log(data);
+        return queryDate('http://localhost:3000/data2');
+      })
+      .then(function (data) {
+        console.log(data);
+      })
+  </script>
+</body>
+
+</html>

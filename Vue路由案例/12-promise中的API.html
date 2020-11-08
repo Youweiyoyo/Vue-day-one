@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- promise中的实例方法API -->
+  <script>
+    function foo() {
+      return  new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          resolve(123)
+        }, 1000)
+      })
+    }
+    foo()
+      // .then 如果是只有一个参数，用于处理正常的结果，第二个函数表示处理异常的数据
+      .then(function (data) {
+        console.log(data); // 接收正常的信息
+      })
+      // .catch 专门用于接收异步任务中的错误信息
+      .catch(function (data) {
+        console.log(data); // 接收错误的信息
+      })
+      //不管前面的任务是成功还是失败都触发 .finally执行函数体
+      .finally(function () {
+        console.log('finally');
+      })
+  </script>
+</body>
+
+</html>

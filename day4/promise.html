@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 浏览器的事件循环机制
+        // 同步任务->微任务（清空）->宏任务
+        // setTimeout 宏任务 macroTask
+        // Promise 微任务 microTask 
+        console.log(1)
+        setTimeout(function () {
+            console.log(2)
+            Promise.resolve().then(function () {
+                console.log(3)
+            })
+        }, 0)
+        new Promise(function (resolve, reject) {
+            console.log(4)
+            resolve(5)
+        }).then(function (data) {
+            console.log(data)
+        })
+        Promise.resolve().then(function () {
+            console.log(6)
+            setTimeout(function () {
+                console.log(7)
+            }, 0)
+            Promise.resolve().then(function () {
+                console.log(8)
+            })
+        })
+        console.log(9)
+    </script>
+</body>
+
+</html>
