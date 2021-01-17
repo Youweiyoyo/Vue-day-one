@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{counter}}</h1>
+    <!-- 事件监听的时候如果该方法不需要额外的参数可以不添加（） -->
+    <button @click=" btn2(abc,$event)">点击按钮+1</button>
+    <button @click=" counter--">点击按钮-1</button> 
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        counter:0,
+        abc:1
+      },
+      methods: {
+        btn2(num,e){
+          console.log(num,e.target);
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

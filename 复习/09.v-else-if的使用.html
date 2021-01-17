@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="box">
+      <h1 v-if="score >= 90">优秀</h1>
+      <h1 v-else-if="score >= 80">良好</h1>
+      <h1 v-else-if="score >= 70">及格</h1>
+      <h1 v-else>不及格</h1>
+    </div>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        score:0
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

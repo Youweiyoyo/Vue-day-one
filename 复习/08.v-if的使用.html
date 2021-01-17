@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="box" v-if="isShow == 0">
+      <h1>isShow为true时显示我</h1>
+    </div>
+    <div class="box3" v-else-if="isShow == 1">
+      <h1>isShow为false时显示我</h1>
+    </div>
+    <div class="box2" v-else> 
+      <h1>什么都不是的时候显示我</h1>
+    </div>
+    
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        isShow:0
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

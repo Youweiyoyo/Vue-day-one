@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: #ff0066;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div @click="boxClick">
+      <button @click.stop="btnClikc">我是按钮</button>
+    </div>
+    <input type="text" @keyup.enter="iptClick">
+    <button @click.once="oneBtn">点击我只触发一次</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        boxClick(){
+          console.log('我是div');
+        },
+        btnClikc(){
+          console.log('我是按钮');
+        },
+        iptClick(){
+          console.log('回车触发事件');
+        },
+        oneBtn(){
+          console.log('只点击后触发一次')
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
