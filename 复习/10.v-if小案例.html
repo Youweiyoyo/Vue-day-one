@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <!-- 添加 key 属性后可以让 Vue 去决定是否复用相同的DOM元素 -->
+  <div id="app">
+   <div v-if="type">
+    <label for="name">用户登录:</label>
+    <input type="text" placeholder="请使用用户名" id="name" key="username">
+   </div>
+   <div v-else>
+    <label for="eamal">邮箱登录:</label>
+    <input type="text" placeholder="请使用邮箱登录" id="eamal" key="eamal">
+   </div>
+   <button @click="type = !type">点击切换登录方式</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        type:true
+      },
+      methods: {
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

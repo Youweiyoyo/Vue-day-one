@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>图书的总价格:{{fullPirce}}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list:[{
+          id:1,
+          name:'编程艺术',
+          pirce:100
+        },
+        {
+          id:2,
+          name:'编程艺术',
+          pirce:200
+        },
+        {
+          id:3,
+          name:'编程艺术',
+          pirce:300
+        }
+        ]
+      },
+      methods: {},
+      //计算属性
+      computed: {
+        fullPirce(){
+          let result = 0 
+          this.list.forEach(item => {
+            result += item.pirce
+          });
+          return result
+        }
+      },
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
