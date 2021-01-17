@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{firstName + " " + lastName }}</h1>
+    <h1>{{name}}</h1>
+    <h1>书籍的总价为:{{addPrice}}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        firstName:"Lebron",
+        lastName:'James',
+        books:[
+          {id:110,name:'编程艺术',price:119},
+          {id:111,name:'深入计算机原理',price:120},
+          {id:121,name:'操作系统',price:130},
+        ],
+      },
+      methods: {},
+      //计算属性
+      computed: {
+        name(){
+          return this.firstName + ' ' +  this.lastName
+        },
+        // 统计书的总价格
+        addPrice(){
+          let result = 0
+          for(let book of this.books){
+            result += book.price
+          }
+          return result
+        }
+      },
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

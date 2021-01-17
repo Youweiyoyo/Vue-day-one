@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{fullName}}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        listName:'Kobe',
+        firstName:'brent'
+      },
+      methods: {},
+      //计算属性
+      computed: {
+        // 每个计算属性都有 get 和 set 方法 我们一般只使用 get方法，也就是只读属性
+        fullName: {
+          set(newValue){
+            console.log('调用了set');
+            let names = newValue.split(' ')
+            this.listName = names[0],
+            this.firstName = names[1]
+          },
+          get(){
+            return this.listName + ' ' + this.firstName
+          },
+        }
+      },
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

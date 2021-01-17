@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>methods:{{fullName1()}}</h1>
+    <h1>methods:{{fullName1()}}</h1>
+    <h1>methods:{{fullName1()}}</h1>
+    <h1>~~~~~~~我是分割线~~~~~~~~</h1>
+    <h1>computed:{{fullName}}</h1>
+    <h1>computed:{{fullName}}</h1>
+    <h1>computed:{{fullName}}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        firstName:'Kobe',
+        lastName:'Byant'
+      },
+      // 计算属性与methods最大的区别是：计算属性存在缓存效果，多次调用的情况下，只需要执行一次
+      // 而 methods方法 不存在缓存效果，使用几次方法就会调用几次函数方法
+      methods: {
+        fullName1(){
+          console.log('我是methods');
+          return  this.lastName + ' ' + this.firstName
+        }
+      },
+      //计算属性
+      computed: {
+        fullName(){
+          console.log('我是computed');
+          return this.lastName + ' ' + this.firstName
+        }
+      },
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
