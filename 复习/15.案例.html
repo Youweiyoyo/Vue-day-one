@@ -6,27 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="../js/Vue.js"></script>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
     <ul>
-      <li v-for="item in list" :key="item">{{item}}</li>
+      <li v-for="(item,index) in list" :class="{active: curredIndex === index}" @click="BtnClick(index)">{{item}}</li>
     </ul>
-    <button @click="BtnClick">点击按钮</button>
   </div>
- 
+
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        list:['A','B','C','D']
+        list:['海王','火影忍者','鬼灭之刃','指环王'],
+        curredIndex:0
       },
       methods: {
-        BtnClick(){
-          // this.list.splice(0,1,'Q')
-          // set(要修改的对象，索引值，修改后的值)  
-          this.$set(this.list, 0 ,'Q')
+        BtnClick(index){
+          this.curredIndex = index
         }
       },
       //计算属性
