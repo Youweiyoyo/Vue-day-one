@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>我是APP1
+    </h1>
+    <cpn-one></cpn-one>
+  </div>
+  <div id="app2">
+    <h2>我是app2</h2>
+    <cpn></cpn>
+  </div>
+  <script>
+    const cpn = Vue.extend({
+      template:`
+        <div>
+           <h1>我是子组件--cpn</h1>
+        </div>
+      `
+    })
+    // 全局挂载 Vue 实例
+    Vue.component('cpn-one',cpn)
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+    var vm = new Vue({
+      el: '#app2',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        cpn:cpn
+      }
+    });
+  </script>
+</body>
+
+</html>

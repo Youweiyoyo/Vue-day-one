@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1.lazy -->
+    <!-- 数据不是实时更新，而是按下回车后 -->
+    <label for="one">
+      one:
+      <input type="text" v-model.lazy="msg" id="one">
+    </label>
+    <h1>one:{{msg}}</h1>
+    <!-- 2.number -->
+    <!-- 将文本框输入的字符串(string)类型的数据,转换成为数值类型(number)类型 -->
+    <label for="two">
+      two:
+      <input type="text" v-model.number="mag">
+    </label>
+    <h1>two: {{typeof mag}}---{{mag}}</h1>
+    <!-- 3.trim -->
+    <!-- 去除文本框首尾两侧的空格 -->
+    <label for="Three">
+      Three:
+      <input type="text" id="Three" v-model.trim="age">
+    </label>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg:'',
+        mag:'',
+        age:''
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
