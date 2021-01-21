@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <select name="hobby" id="" v-model="hobby" >
+      <option value="鸡腿">鸡腿</option>
+      <option value="肘子">肘子</option>
+      <option value="鸡排">鸡排</option>
+      <option value="血肠">血肠</option>
+    </select>
+    <h1>您选择的是:{{hobby}}</h1>
+    <select name="abc" id="" v-model="hobby2" multiple>
+      <option value="鸡腿">鸡腿</option>
+      <option value="肘子">肘子</option>
+      <option value="鸡排">鸡排</option>
+      <option value="血肠">血肠</option>
+    </select>
+    <h1>{{hobby2}}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        hobby:'鸡腿',
+        hobby2:[]
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

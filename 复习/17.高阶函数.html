@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1.filter函数
+    const nums = [1,2,3,4,5]
+    let newNums = nums.filter((n)=>{ 
+      return n > 30
+    })
+    console.log(newNums);
+    // 2.map 函数
+    let nuwNums2  = nums.map((n)=>{
+      return n * 2
+    })
+    console.log(nuwNums2);
+    // 3.map 函数
+    let newNums3 = nums.reduce((value,n)=>{
+      return  value + n  
+    },0)
+    // 第一次:value + n
+    // 第一次:   0  + 1
+    // 第二次:   1  + 2
+    // 第三次:   3  + 3
+    // 第四次:   6  + 4
+    // 第五次:   10 + 5
+    //   15
+    console.log(newNums3);
+    let totle = nums.filter(n => n<3).map(n=> n*2).reduce((value,n)=> value + n,0)
+    console.log(totle);
+  </script>
+</body>
+</html>

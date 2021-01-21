@@ -46,11 +46,9 @@ const vm = new Vue({
   },
   computed: {
     totalPrices() {
-      let prices = 0;
-      for (let book of this.books) {
-        prices += parseInt(book.price) * book.count;
-      }
-      return prices;
+      return this.books.reduce((preValue, book) => {
+        return preValue + book.price * book.count;
+      }, 0);
     },
   },
   filters: {

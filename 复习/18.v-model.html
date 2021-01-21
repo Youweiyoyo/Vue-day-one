@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="msg">
+    <h1>{{msg}}</h1>
+    <input type="text" :value="msg" v-on:input="onchack">
+    <input type="text" :value="msg" @input="msg = $event.target.value">
+    <label for="man">男</label>
+    <input type="radio" id="man" value="男" v-model="sex">
+    <label for="wuman">女</label>
+    <input type="radio" id="wuman" value="女" v-model="sex">
+    <h1>{{sex}}</h1>
+  </div>  
+
+  <script>
+    var vm = new Vue({
+      el: '#app', 
+      data: {
+        msg:'',
+        sex:'男 '
+      },
+      methods: {
+        onchack(e){
+          this.msg = e.target.value
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>

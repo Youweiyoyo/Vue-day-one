@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="checkbox" id="Consent" v-model="isConsent">
+    <label for="Consent">同意协议</label>
+    <h1>您选择的是:{{isConsent}}</h1>
+    <br>
+    <button :disabled="!isConsent">点击进行下一步</button>
+    <br>
+    <input type="checkbox" id="basketball" v-model="hobby" value="篮球"><label for="basketball">篮球</label>
+    <input type="checkbox" id="badminton" v-model="hobby" value="羽毛球"><label for="badminton">羽毛球</label>
+    <input type="checkbox" id="soccer" v-model="hobby" value="足球"><label for="soccer">足球</label>
+    <input type="checkbox" id="ping-pong" v-model="hobby" value="乒乓球"><label for="ping-pong">乒乓球</label>
+    <h1>张俊男的爱好:{{hobby}}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        isConsent:false,
+        hobby:[]
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+    });
+  </script>
+</body>
+
+</html>
