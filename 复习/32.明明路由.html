@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+  <script src="../js/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/user/1">User1</router-link>
+    <router-link to="/user/2">User2</router-link>
+    <router-link :to="{name:'user',params:{id:3}}">User3</router-link>
+    <router-link to="/home">home</router-link>
+    <!-- 路由占位符 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const user = Vue.extend({
+      props:['id'],
+      template:`
+        <div>
+          <h1>组件一 {{id}}</h1>  
+        </div>
+      `
+    });
+    const home = Vue.extend({
+      template:`
+        <div>
+          <h1>组件二</h1>  
+        </div>
+      `
+    });
+    const router = new VueRouter({
+      routes:[
+        {name:'user', path:'/user/:id',component:user,props: route =>({id:route.params.id}) },
+        {path:'/home',component:home},
+      ]
+    });
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      router
+    });
+  </script>
+</body>
+
+</html>

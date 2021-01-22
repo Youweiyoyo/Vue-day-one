@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+  <script src="../js/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/user1">有为</router-link>
+    <router-link to="/user2">俊俊</router-link>
+    <router-link to="/user3">节操</router-link>
+    <!-- 路由占位符 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const user1 = Vue.extend({
+      template:`
+        <div>
+          <h1>我是组件1</h1>  
+        </div>
+      `
+    });
+    const user2 = Vue.extend({
+      template:`
+        <div>
+          <h1>我是组件2</h1>  
+        </div>
+      `
+    });
+    const user3 = Vue.extend({
+      template:`
+        <div>
+          <h1>我是组件3</h1>  
+        </div>
+      `
+    });
+    const router = new VueRouter({
+      routes:[
+        {path:'/',redirect:'/user2'},
+        {path:'/user1',component:user1},
+        {path:'/user2',component:user2},
+        {path:'/user3',component:user3},
+      ]
+    });
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      router
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+  <script src="../js/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/user1">组件1</router-link>
+    <router-link to="/user2">组件2</router-link>
+    <!-- 路由占位符 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const user1 = Vue.extend({
+      template:`
+        <div>
+          <h1>组件1</h1>
+        </div>
+      `
+    });
+    const user2 = Vue.extend({
+      template:`
+        <div>
+          <h1>组件2</h1>
+          <hr>
+          <router-link to="/user2/tab1">Tab1</router-link>
+          <router-link to="/user2/tab2">Tab2</router-link>
+          <router-view></router-view>
+        </div>
+      `
+    });
+    const tab1 = Vue.extend({
+      template:`
+        <div>
+          <h3>Tab1</h3>  
+        </div>
+      `
+    });
+    const tab2 = Vue.extend({
+      template:`
+        <div>
+          <h3>Tab2</h3>  
+        </div>
+      `
+    });
+    const router = new VueRouter({
+      routes:[
+        {path:'/user1',component:user1},
+        {path:'/user2',component:user2,children:[
+          {path:'/user2/tab1',component:tab1},
+          {path:'/user2/tab2',component:tab2},
+        ]}
+      ]
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      component:{
+        tab1:tab1,
+        tab2:tab2
+      },
+      router
+    });
+  </script>
+</body>
+
+</html>
