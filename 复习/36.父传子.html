@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <fat></fat>
+  </div>
+
+  <script>
+    // 创建子组件
+    const Father = {
+      props:{
+        one:{
+          type:Array,
+          required:true
+        },
+      },
+      template:`
+        <div>
+          <h1>我是子组件</h1>
+          <ul>
+            <li v-for="(item) in one" :key="item">{{item}}</li>  
+          </ul>
+        </div>
+      `
+    };
+    // 创建父组件
+    const Child = {
+      template:`
+        <div>
+          <h1>我是父组件</h1>  
+          <cpn :one="list"></cpn>
+        </div>
+      `,
+      components:{
+        cpn:Father
+      },
+      data(){
+        return {
+          list:['火影','海王','鬼灭之刃']
+        }
+      }
+    };
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        fat:Child
+      }
+    });
+  </script>
+</body>
+
+</html>

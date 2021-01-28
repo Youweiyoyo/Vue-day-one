@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <father></father>
+  </div>
+
+  <script>
+    const child = {
+      template:`
+        <div>
+          <button v-for="item in list" :key="item.id" @click="btnclick(item)">{{item.name}}</button>
+        </div>
+      `,
+      data(){
+        return{
+          list:[
+            {id:1,name:'zs'},
+            {id:2,name:'ls'},
+            {id:3,name:'ww'}
+          ]
+        }
+      },
+      methods:{
+        btnclick(item){
+          this.$emit('qqqq',item)
+        }
+      }
+    };
+    const father ={
+      template:`
+        <div>
+          <child @qqqq="tttt"></child>
+        </div>
+      `,
+      components:{
+        child:child
+      },
+      methods:{
+        tttt(item){
+          console.log(111,item);
+        }
+      }
+    };
+    
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        father:father
+      }
+    });
+  </script>
+</body>
+
+</html>
