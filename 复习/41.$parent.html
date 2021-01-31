@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <Father/>
+  </div>
+
+  <script>
+    const child = {
+      template:`
+        <div>
+          <h1>我是子组件</h1>  
+          <button @click="btnClick">点击我获取父组件</button>
+        </div>
+      `,
+      methods:{
+        btnClick(){
+          console.log(this.$parent);  // 访问的是父组件
+          console.log(this.$root)   // 访问的是根组件
+        }
+      },
+      data(){
+        return{
+        }
+      }
+    }
+    // 创建组件
+    const Father = {
+      template:`
+        <div>
+          <h1>我是父组件</h1>  
+          <child/>
+        </div>
+      `,
+      components:{
+        child:child
+      },
+      data(){
+        return{
+          num :20
+        }
+      }
+    }
+    
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        num:10
+      },
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        Father:Father
+      }
+    });
+  </script>
+</body>
+
+</html>

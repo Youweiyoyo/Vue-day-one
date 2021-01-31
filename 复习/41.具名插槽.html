@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <one>
+      <template #zhong>
+        <button>我是中间的插槽</button>
+      </template>
+      <template  #you>
+        <p>我是右右右边的插槽</p>
+      </template>
+      <template #zuo>
+        <span>我是左左左边的插槽</span>
+      </template>
+      <template #default>
+        <div>我是默认插槽</div>
+      </template>
+    </one>
+  </div>
+
+  <script>
+    const child = {
+      template:`
+        <div>
+         <slot name="zuo">左</slot> 
+         <slot name="zhong">中</slot> 
+         <slot name="you">右</slot> 
+         <slot></slot>
+        </div>
+      `,
+    }
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        one:child
+      }
+    });
+  </script>
+</body>
+
+</html>

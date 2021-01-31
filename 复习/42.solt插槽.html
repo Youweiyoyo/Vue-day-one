@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <one>
+      <span>
+        我是组件一span
+      </span>
+      <div>
+        我是组件一div
+      </div>
+    </one>
+    <one>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </one>
+    <one>
+      <p>我是第四个组件p标签</p>
+    </one>
+    <one></one>
+  </div>
+
+  <script>
+    const child = {
+      template:`
+        <div>
+          <h1>我是子组件一</h1>
+          <slot>
+          <button>slot</button>  
+          </slot>
+          <h2>哈哈哈我是组件</h2>  
+        </div>
+      `
+    };
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        one:child
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+      <h1>我是父组件的data数据:{{sum}}</h1>
+      <btn :num="sum" @kkk="inputbtn"></btn>
+  </div>
+
+  <script>
+    // 创建子组件
+    const child1 = {
+      props:{
+        num:{
+          type:[String,Number],
+          required:true
+        }
+      },
+      template:`
+        <div>
+          <h1>我是子组件中从父组件传递过来的props数据:{{num}}</h1>
+          <h1>我是子组件中定义的data数据:{{cNum}}</h1>
+          <input type="text" @input="inputChage">
+        </div>
+      `,
+      data(){
+        return{
+          cNum:this.num
+        }
+      },
+      methods:{
+        inputChage(e){
+          this.cNum = e.target.value
+          this.$emit('kkk',this.cNum)
+        }
+      }
+    };
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        sum:1
+      },
+      methods: {
+        inputbtn(value){
+          console.log(typeof value);
+          this.sum = value
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        btn:child1
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <child ref="aaa"></child>
+    <button @click="btnClick">点击我拿到组件实例</button>
+  </div>
+
+  <script>
+    // 创建组件
+    const child = {
+      template:`
+        <div>
+          <h1>我是子组件</h1>
+        </div>
+      `,
+      data(){
+        return{
+          num:10
+        }
+      }
+    }
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        btnClick(){
+          console.log(this.$children);
+          console.log(this.$refs.aaa.num);
+        }
+      },
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        child:child
+      }
+    });
+  </script>
+</body>
+
+</html>
