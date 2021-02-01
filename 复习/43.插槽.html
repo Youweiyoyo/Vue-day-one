@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <one>
+      <!-- 默认插槽 -->
+      <div><h1>我是slot插槽</h1></div>
+    </one>
+    <two>
+      <!-- 
+        具名插槽 
+        1、直接在标签上写 slot="xxx"(xxx是在子组件中的某个slot标签名称) ,该标签会填放到与子组件<slot/>标签相对应的位置 (这种方法已经被 Vue 放弃了，但还是可以使用)
+        2、使用 v-slot ，但需要配合 <template/> 标签 ，将子组件中用 name="xxx" 定义好的 <slot/> 标签的名称 写在 <template/> 标签上即可
+      -->
+      <button slot="aaa">点击按钮+1</button>
+      <template #bbb>
+        <p>我是子组件中slot标签占位的子组件</p>
+      </template>
+    </two>
+    <!-- 
+      作用域插槽 
+      在子组件的<slot/>标签上通过 :xxx="子组件中的数据"来定义,并且绑定数据。在父组件的子组件标签中填写 <template/>在标签中可以用v-slot="xxx"(xxx为自定义的名称，用来访问在子组件<slot/>标签中绑定属性的名称) 通过 xxx.绑定属性的名称.某一属性
+    -->
+    <Three>
+      <template #aaa="list">
+        <ul>
+            <li v-for="item in list.data" :key="item">{{item}}</li>
+        </ul>
+      </template>
+    </Three>
+  </div>
+
+  <script>
+    // 组件中的默认插槽
+  const child = {
+    template:`
+      <div>
+        <h1>我是h1标签</h1>
+        <slot></slot>
+      </div>
+    `
+  };
+  // 组件中的具名插槽
+  const child2 ={
+    template:`
+      <div>
+        <h1>我是子组件二h1标签</h1>
+        <slot name="aaa"></slot>
+        <slot name="bbb"></slot>
+        <slot name="ccc"></slot>
+      </div>
+    `
+  };
+  const child3 = {
+    template:`
+      <div>
+        <slot :data="list" name="aaa"></slot>
+      </div>
+    `,
+    data(){
+      return{
+        list:['zs','ls','ww','zl']
+      }
+    }
+  };
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        one:child,
+        two:child2,
+        Three:child3
+      }
+    });
+  </script>
+</body>
+
+</html>
