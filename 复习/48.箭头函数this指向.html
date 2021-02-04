@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj = {
+      aaa(){
+        setTimeout(()=>{
+          console.log(this);  // aaa
+        })
+        console.log(this);  // aaa
+        setTimeout(function(){
+          console.log(this);  //  window
+        })
+      }
+    }
+    obj.aaa()
+  </script>
+</body>
+</html>

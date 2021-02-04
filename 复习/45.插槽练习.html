@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/Vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 默认插槽 -->
+    <one>
+      <button>+1</button>
+    </one>
+    <!-- 具名插槽 -->
+    <two>
+      <div slot="aaa">我来匹配子组件中aaa插槽</div>
+      <button slot="ccc">我来匹配ccc插槽</button>
+      <template #bbb>
+        <span>我来匹配bbb插槽</span>
+      </template>
+    </two>
+    <!-- 作用域插槽 -->
+    <Three>
+      <template #aaa="data">
+        <h1>{{data.list}}</h1>
+      </template>
+    </Three>
+  </div>
+
+  <script>
+    const child = {
+      template:`
+      <div>
+        <h1>我是子组件插槽1</h1>
+        <slot></slot>
+      </div>
+      `
+    };
+    const child2 = {
+      template:`
+        <div>
+          <h1>我是子组件插槽2</h1>  
+          <slot name="aaa"></slot>
+          <slot name="bbb"></slot>
+          <slot name="ccc"></slot>
+        </div>
+      `
+    };
+    const child3 = {
+      template:`
+        <div>
+          <h1>我是子组件插槽3</h1>  
+          <slot name="aaa" :list="msg"></slot>
+          <slot></slot>
+        </div>
+      `,
+      data(){
+        return {
+          msg:'我是组件3中的数据msg'
+        }
+      }
+    };
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      //计算属性
+      computed: {},
+      //侦听器
+      watch: {},
+      components:{
+        one:child,
+        two:child2,
+        Three:child3
+      }
+    });
+  </script>
+</body>
+
+</html>
